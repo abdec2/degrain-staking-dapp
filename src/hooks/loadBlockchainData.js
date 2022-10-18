@@ -9,7 +9,7 @@ export const useBlockChainData = (setDataLoading) => {
 
     const loadData = async () => {
         setDataLoading(true)
-        const provider = ethers.getDefaultProvider('goerli', {
+        const provider = ethers.getDefaultProvider('mainnet', {
             infura: process.env.REACT_APP_INFURA_PROJECT_ID
         });
         const contract = new ethers.Contract(CONFIG.contractAddress, stakeABI, provider)
