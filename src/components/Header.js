@@ -10,8 +10,6 @@ import WalletConnectProvider from "@walletconnect/web3-provider";
 import logo from './../assets/logo.png'
 
 const providerOptions = {
-  network: 'mainnet',
-  cacheProvider: false,
   walletconnect: {
     package: WalletConnectProvider, // required
     options: {
@@ -25,7 +23,7 @@ const Header = ({ setError, setErrMsg }) => {
   const [isOpen, setIsOpen] = useState(false)
 
   const handleWalletConnect = async () => {
-
+    console.log('asdada')
     const web3modal = new Web3Modal({
       providerOptions
     });
@@ -87,14 +85,14 @@ const Header = ({ setError, setErrMsg }) => {
         <div className="w-32 p-4 pl-0">
           <img
             src={logo}
-            alt="Chronoly"
+            alt="Degrain"
           />
         </div>
         <div className="hidden md:flex">
           {account ? (
             <button
               className="py-2 px-6 ml-4 text-white border border-white rounded-lg truncate font-medium transition ease-in-out duration-300 hover:border-[#ed329b]"
-              onClick={() => disconnectWallet()}
+              onClick={disconnectWallet}
             >
               {account.slice(0, 5) + '...' + account.slice(37, 42)}
           
@@ -102,33 +100,31 @@ const Header = ({ setError, setErrMsg }) => {
           ) : (
             <button
               className="py-2 px-6 ml-4 text-white border border-white rounded-lg truncate font-medium transition ease-in-out duration-300 hover:border-[#ed329b]"
-              onClick={() => handleWalletConnect()}
+              onClick={handleWalletConnect}
             >
               Connect Wallet
 
             </button>
           )}
         </div>
-        <div className="md:hidden" >
+        <div className="flex md:hidden" >
           {account ? (
-            <button className="" onClick={() => handleWalletConnect()}>
-              <svg
-                className="w-8 fill-white transition ease-in-out duration-300 group-hover:fill-white"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 512 512"
-              >
-                <path d="M448 32C465.7 32 480 46.33 480 64C480 81.67 465.7 96 448 96H80C71.16 96 64 103.2 64 112C64 120.8 71.16 128 80 128H448C483.3 128 512 156.7 512 192V416C512 451.3 483.3 480 448 480H64C28.65 480 0 451.3 0 416V96C0 60.65 28.65 32 64 32H448zM416 336C433.7 336 448 321.7 448 304C448 286.3 433.7 272 416 272C398.3 272 384 286.3 384 304C384 321.7 398.3 336 416 336z" />
-              </svg>
+            <button onClick={disconnectWallet}>
+              <div>
+              <svg className="w-8 fill-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M160 96c17.7 0 32-14.3 32-32s-14.3-32-32-32H96C43 32 0 75 0 128V384c0 53 43 96 96 96h64c17.7 0 32-14.3 32-32s-14.3-32-32-32H96c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32h64zM504.5 273.4c4.8-4.5 7.5-10.8 7.5-17.4s-2.7-12.9-7.5-17.4l-144-136c-7-6.6-17.2-8.4-26-4.6s-14.5 12.5-14.5 22v72H192c-17.7 0-32 14.3-32 32l0 64c0 17.7 14.3 32 32 32H320v72c0 9.6 5.7 18.2 14.5 22s19 2 26-4.6l144-136z"/></svg>
+              </div>
             </button>
           ) : (
-            <button className="" onClick={() => disconnectWallet()}>
-              <svg
-                className="w-8 fill-white transition ease-in-out duration-300 group-hover:fill-white"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 512 512"
-              >
-                <path d="M448 32C465.7 32 480 46.33 480 64C480 81.67 465.7 96 448 96H80C71.16 96 64 103.2 64 112C64 120.8 71.16 128 80 128H448C483.3 128 512 156.7 512 192V416C512 451.3 483.3 480 448 480H64C28.65 480 0 451.3 0 416V96C0 60.65 28.65 32 64 32H448zM416 336C433.7 336 448 321.7 448 304C448 286.3 433.7 272 416 272C398.3 272 384 286.3 384 304C384 321.7 398.3 336 416 336z" />
-              </svg>
+            <button onClick={handleWalletConnect}>
+              <div>
+                <svg
+                  className="w-8 fill-white transition ease-in-out duration-300 group-hover:fill-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 512 512"
+                >
+                  <path d="M448 32C465.7 32 480 46.33 480 64C480 81.67 465.7 96 448 96H80C71.16 96 64 103.2 64 112C64 120.8 71.16 128 80 128H448C483.3 128 512 156.7 512 192V416C512 451.3 483.3 480 448 480H64C28.65 480 0 451.3 0 416V96C0 60.65 28.65 32 64 32H448zM416 336C433.7 336 448 321.7 448 304C448 286.3 433.7 272 416 272C398.3 272 384 286.3 384 304C384 321.7 398.3 336 416 336z" />
+                </svg>
+              </div>
             </button>
           )}
         </div>

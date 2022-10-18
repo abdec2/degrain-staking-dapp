@@ -174,11 +174,11 @@ const StakeForm = ({ setError, setErrMsg, plan }) => {
             <LoadingScreen dataLoading={isLoading} />
             <div className=" mt-2 mb-4">
                 <div>
-
                     <div className="w-full flex items-center justify-between">
                         <div className='w-full relative'>
                             <input type="text" name="amount" className="w-full bg-transparent border border-[color:var(--border-color)] text-md focus:outline-none px-2 py-3 rounded-lg" ref={amount} />
                             <span className='absolute top-0 right-0 mr-3 mt-3 cursor-pointer hover:text-yellow-500' onClick={handleMax}>Max</span>
+                            <p><span className='text-[#ed329b]'>Available DGRN:</span> {blockChainData.TokenBalance ? parseFloat(blockChainData.TokenBalance).toFixed(3) : 0.00}</p>
                         </div>
 
                     </div>
