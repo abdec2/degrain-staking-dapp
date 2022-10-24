@@ -7,9 +7,18 @@ import tokenABI from './../abi/token.json'
 import CONFIG from "./../abi/config";
 import MobileMenu from "./MobileMenu";
 import WalletConnectProvider from "@walletconnect/web3-provider";
+import CoinbaseWalletSDK from "@coinbase/wallet-sdk";
+
 import logo from './../assets/logo.png'
 
 const providerOptions = {
+  coinbasewallet: {
+    package: CoinbaseWalletSDK, 
+    options: {
+      appName: "Degrain Staking",
+      infuraId: process.env.REACT_APP_INFURA_PROJECT_ID 
+    }
+  }, 
   walletconnect: {
     package: WalletConnectProvider, // required
     options: {
